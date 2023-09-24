@@ -1,2 +1,3 @@
 # docker-laravel
-Laravel environment on docker compose
+This is my development environment.
+Basic Laravel application on docker!
