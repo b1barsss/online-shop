@@ -1,2 +1,2 @@
 # docker-laravel
-Laravel environment on docker
+Laravel environment on docker compose
