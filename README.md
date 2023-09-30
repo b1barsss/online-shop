@@ -6,9 +6,14 @@ Basic Laravel application on docker!
 docker compose up -d nginx
 ```
 
-2. To install Laravel (it saves project files in the "src/" folder):
+2. Migrate table:
 ```bash
-docker compose run --rm composer create-project laravel/laravel .
+docker compose run --rm artisan migrate
+```
+
+3. Seed catalog_user_roles table:
+```bash
+docker compose run --rm artisan db:seed --class=SeedCatalogUserRolesTable
 ```
 
 3. To use your any composer commands:
