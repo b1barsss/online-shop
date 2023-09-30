@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -27,20 +28,46 @@
                 </ul>
                 <div class="">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Register</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Logout</a>
-                        </li>
+                        @auth
+                            <li class="nav-item active">
+                                <span class="nav-link">Hi, {{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
+                            </li>
+
+                            <li class="nav-item active">
+                                <form action="{{ route('api.logout') }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-link" type="submit">Logout</button>
+                                </form>
+                            </li>
+                        @else
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/register">Register</a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
+    @if(session('danger'))
+        <div class="container">
+            <div class="alert alert-danger center">
+                {{ session('danger') }}
+            </div>
+        </div>
+    @elseif(session('success'))
+        <div class="container">
+            <div class="alert alert-success center">
+                {{ session('success') }}
+            </div>
+        </div>
+    @else
+        <br>
+        <br>
+    @endif
 
     <div class="container">
         @yield('content')
