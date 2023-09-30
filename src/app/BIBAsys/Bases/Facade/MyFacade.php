@@ -2,7 +2,7 @@
 
 namespace App\BIBAsys\Bases\Facade;
 
-abstract class Multi extends \Illuminate\Support\Facades\Facade
+abstract class MyFacade extends \Illuminate\Support\Facades\Facade
 {
     public static function getFacadeRoot()
     {
