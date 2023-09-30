@@ -32,6 +32,11 @@
                                 <label class="form-label" for="form2Example2">Confirm Password</label>
                             </div>
 
+                            <div class="form-check form-switch">
+                                <input name="admin_role" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Admin role</label>
+                            </div>
+                            <br>
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
 

@@ -37,6 +37,8 @@ services:
       - env/pgadmin.env
     ports:
       - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
     depends_on:
       - pgsql
     restart: unless-stopped
@@ -60,3 +62,4 @@ services:
 
 volumes:
   pgsql_data:
+  pgadmin_data:

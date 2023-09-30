@@ -30,13 +30,15 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item active">
-                                <span class="nav-link">Hi, {{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
+                                <span class="nav-link text-success">Hi, {{ \Illuminate\Support\Facades\Auth::user()->name }}!</span>
                             </li>
-
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Cart<span class="sr-only">(current)</span></a>
+                            </li>
                             <li class="nav-item active">
                                 <form action="{{ route('api.logout') }}" method="post">
                                     @csrf
-                                    <button class="btn btn-link" type="submit">Logout</button>
+                                    <button class="btn btn-link text-dark" type="submit">Logout</button>
                                 </form>
                             </li>
                         @else

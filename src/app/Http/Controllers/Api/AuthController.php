@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\BIBAsys\Bases\Controller\API\MyController;
 use App\Models\User;
+use App\Sources\Catalogs\UserRole\UserRoleEnum;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,10 +40,11 @@ class AuthController extends MyController
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'catalog_user_role' => isset($request->all()['admin_role']) ? UserRoleEnum::ADMIN : UserRoleEnum::CUSTOMER
         ]);
 
         session()->flash('success', 'User registered successfully.');
-        return Redirect::to(route('main'));
+        return Redirect::to(route('home'));
 //        $success['name'] = $user->name;
 //        return $this->sendResponse($success, 'User register successfully.');
     }
@@ -71,7 +73,7 @@ class AuthController extends MyController
             $success['name'] = $user->name;
 
             session()->flash('success', 'User login successfully.');
-            return Redirect::to(route('main'));
+            return Redirect::to(route('home'));
 //            return $this->sendResponse($success, 'User login successfully.');
         }
 
@@ -85,8 +87,10 @@ class AuthController extends MyController
     {
         Auth::user()->tokens()->delete();
         Auth::guard('web')->logout();
+        session()->flash('success', 'User logged out successfully');
+        return Redirect::to('/');
+
 //        return $this->sendResponse([], 'User logout successfully.');
 
-        return Redirect::to('/');
     }
 }
