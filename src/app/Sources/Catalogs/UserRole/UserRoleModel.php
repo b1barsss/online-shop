@@ -9,7 +9,6 @@ class UserRoleModel extends Model
     protected $table = 'catalog_user_roles';
 
     protected $fillable = [
-        'id',
         'name'
     ];
 }
