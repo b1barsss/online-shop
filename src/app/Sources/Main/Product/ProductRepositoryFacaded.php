@@ -15,7 +15,7 @@ class ProductRepositoryFacaded extends MyRepository
                 'main.name',
                 'main.description',
                 'main.price',
-                'main.image_id',
+                'main.created_by',
             );
 
         return $this;
@@ -25,6 +25,14 @@ class ProductRepositoryFacaded extends MyRepository
         $this->query
             ->addSelect('image.path as image__path')
             ->join('images as image', 'image.id', '=', 'main.image_id', 'left');
+
+        return $this;
+    }
+
+    public function addJoinUser(): static {
+        $this->query
+            ->addSelect('user.name as user__name')
+            ->join('users as user', 'user.id', '=', 'main.created_by', 'inner');
 
         return $this;
     }

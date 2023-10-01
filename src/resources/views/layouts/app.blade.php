@@ -17,10 +17,14 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/products">Products<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('product.index') }}">Products<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Orders</a>
+                        <a class="nav-link" href="{{ route('order.index') }}">Orders
+                            @if($orderBadge != 0)
+                                <span class="badge badge-pill badge-success">{{ $orderBadge }}</span>
+                            @endif</a>
+
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('cart.index') }}">Cart

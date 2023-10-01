@@ -21,6 +21,7 @@ class ProductController extends Controller
     {
         $ProductRepository = ProductRepository::useMain()
             ->addJoinImages()
+            ->addJoinUser()
             ->get()
             ->sortBy('id')
             ->toArray();

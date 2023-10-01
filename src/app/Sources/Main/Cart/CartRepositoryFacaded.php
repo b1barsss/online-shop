@@ -22,7 +22,7 @@ class CartRepositoryFacaded extends MyRepository
 
     public function addJoinDtProducts(): static {
         $this->query
-//            ->addSelect('dt__product.product_id as dt__product__product_id')
+            ->addSelect('dt__product.product_id as dt__product__product_id')
             ->addSelect('dt__product.id as dt__product__id')
             ->join('cart_products as dt__product', 'dt__product.cart_id', '=', 'main.id', 'inner');
 

@@ -23,7 +23,7 @@
                                                     <div class="btn-wrapper text-center d-flex justify-content-between">
                                                         <div>
                                                             <a href="{{ route('product.show', ['product_id' => $product->id]) }}" class="text-dark">
-                                                                <?= $product->name ?>
+                                                                <?= $product->name . " ($product->user__name)" ?>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -34,9 +34,7 @@
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="btn-wrapper text-center d-flex justify-content-between">
-
-
-                                                        @if(\Illuminate\Support\Facades\Auth::isAdmin())
+                                                        @if(\Illuminate\Support\Facades\Auth::isAdmin() and \Illuminate\Support\Facades\Auth::isItMe($product->created_by))
                                                             <form action="{{ route('product.destroy', ['product_id' => $product->id]) }}" method="post">
                                                                 @csrf
                                                                 @method('delete')
@@ -47,7 +45,7 @@
                                                                 >Delete</button>
                                                             </form>
                                                             <a href="{{ route('product.edit', ['product_id' => $product->id]) }}" class="btn btn-sm btn-warning" style="">Edit</a>
-                                                        @else
+                                                        @elseif(\Illuminate\Support\Facades\Auth::isCustomer())
                                                             <a href="{{ route('cart.add', ['product_id' => $product->id]) }}" class="btn btn-sm btn-success" style="">Add to cart</a>
                                                         @endif
                                                     </div>
