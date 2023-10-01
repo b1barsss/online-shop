@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="btn-wrapper text-center d-flex justify-content-between">
-                            <div class="h4">Products</div>
+                            <div class="h4">Cart</div>
                             <a href="{{ route('product.index') }}" class="btn btn-outline-danger">Close</a>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 40%;">Price</td>
-                                    <td>$<?= $product->price ?></td>
+                                    <td><?= $product->price ?></td>
                                 </tr>
                                 </tbody>
                             </table>

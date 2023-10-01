@@ -29,3 +29,14 @@ Route::controller(\App\Http\Controllers\Web\ProductController::class)->group(fun
     Route::get('product/{product_id}', 'show')->name('product.show');
     Route::post('product', 'store')->name('product.store');
 });
+
+Route::controller(\App\Http\Controllers\Web\CartController::class)->group(function () {
+//    Route::get('product/create', 'create')->name('product.create');
+//    Route::get('product/{product_id}/edit', 'edit')->name('product.edit');
+//    Route::put('product/{product_id}', 'update')->name('product.update');
+//    Route::delete('product/{product_id}', 'destroy')->name('product.destroy');
+    Route::get('carts', 'index')->name('cart.index');
+//    Route::get('product/{product_id}', 'show')->name('product.show');
+    Route::get('cart/{product_id}/add', 'add')->name('cart.add');
+    Route::get('cart/{dt__product__id}/remove', 'remove')->name('cart.remove');
+});

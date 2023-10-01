@@ -7,9 +7,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="btn-wrapper text-center d-flex justify-content-between">
-                            <div class="h4">Products</div>
-                            @if(\Illuminate\Support\Facades\Auth::isAdmin())
-                                <a href="{{ route('product.create') }}" class="btn btn-outline-success">Add Product</a>
+                            <div class="h4">Cart</div>
+                            @if($productCount > 0)
+                                <a href="" class="btn btn-outline-success">Send Order</a>
                             @endif
                         </div>
                     </div>
@@ -22,34 +22,26 @@
                                                 <div class="card-header">
                                                     <div class="btn-wrapper text-center d-flex justify-content-between">
                                                         <div>
-                                                            <a href="{{ route('product.show', ['product_id' => $product->id]) }}" class="text-dark">
-                                                                <?= $product->name ?>
+                                                            <a href="{{ route('product.show', ['product_id' => $product->product__id]) }}" class="text-dark">
+                                                                <?= $product->product__name ?>
                                                             </a>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="card-body">
-                                                    <?= "\${$product->price}" ?>
+                                                    <?= "\${$product->product__price}" ?>
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="btn-wrapper text-center d-flex justify-content-between">
-
-
-                                                        @if(\Illuminate\Support\Facades\Auth::isAdmin())
-                                                            <form action="{{ route('product.destroy', ['product_id' => $product->id]) }}" method="post">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button
-                                                                    type="submit"
-                                                                    class="btn btn-danger btn-sm text-white d-flex align-items-center"
-                                                                    onclick="return confirm('Are you sure?')"
-                                                                >Delete</button>
-                                                            </form>
-                                                            <a href="{{ route('product.edit', ['product_id' => $product->id]) }}" class="btn btn-sm btn-warning" style="">Edit</a>
-                                                        @else
-                                                            <a href="{{ route('cart.add', ['product_id' => $product->id]) }}" class="btn btn-sm btn-success" style="">Add to cart</a>
-                                                        @endif
+                                                        <form action="{{ route('cart.remove', ['dt__product__id' => $product->dt__product__id]) }}">
+                                                            @csrf
+                                                            <button
+                                                                type="submit"
+                                                                class="btn btn-secondary btn-sm text-white d-flex align-items-center"
+                                                                onclick="return confirm('Are you sure?')"
+                                                            >Remove</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

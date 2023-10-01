@@ -9,7 +9,7 @@ class ProductRepositoryFacaded extends MyRepository
 {
     protected string $tableName = 'products';
     public function useMain(): static {
-        $this->query = DB::table($this->tableName(), $this->tableAlias)
+        $this->query = DB::table($this->tableName(), 'main')
             ->addSelect(
                 'main.id',
                 'main.name',

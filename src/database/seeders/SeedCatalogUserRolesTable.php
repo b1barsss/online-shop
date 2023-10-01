@@ -19,8 +19,8 @@ class SeedCatalogUserRolesTable extends Seeder
         }
 
         $userRoles = [
-            ['name' => 'admin',],
-            ['name' => 'customer'],
+            ['name' => 'Admin',],
+            ['name' => 'Customer'],
         ];
 
         // Insert the data into the database

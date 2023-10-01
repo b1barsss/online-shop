@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -21,10 +20,13 @@
                         <a class="nav-link" href="/products">Products<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">Orders</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Disabled</a>
+                        <a class="nav-link" href="{{ route('cart.index') }}">Cart
+                            @if($cartBadge != 0)
+                                <span class="badge badge-pill badge-success">{{ $cartBadge }}</span>
+                            @endif <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <div class="">
@@ -32,14 +34,11 @@
                         @auth
                             <li class="nav-item active">
                                 @php
-                                $user = \Illuminate\Support\Facades\Auth::user();
-                                $username = $user->name . ' ';
-                                $username .= '(' . \App\Sources\Catalogs\UserRole\UserRoleModel::find($user->catalog_user_role)->name . ')';
+                                    $user = \Illuminate\Support\Facades\Auth::user();
+                                    $username = $user->name . ' ';
+                                    $username .= '(' . \App\Sources\Catalogs\UserRole\UserRoleModel::find($user->catalog_user_role)->name . ')';
                                 @endphp
                                 <span class="nav-link text-success">Hi, {{ $username }}!</span>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/">Cart<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
                                 <form action="{{ route('api.logout') }}" method="post">
@@ -80,7 +79,5 @@
     <div class="container">
         @yield('content')
     </div>
-
-{{--@yield('footer_scrip    ts')--}}
 </body>
 </html>

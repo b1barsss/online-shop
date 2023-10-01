@@ -14,7 +14,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        if (Auth::check()) {
+        if (Auth::isLoggedIn()) {
             return \Illuminate\Support\Facades\Redirect::to('/');
         }
         return view('auth.register');
@@ -29,7 +29,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        if (Auth::check()) {
+        if (Auth::isLoggedIn()) {
             return \Illuminate\Support\Facades\Redirect::to('/');
         }
         $apiUrl = '/api/login';
@@ -38,12 +38,8 @@ class AuthController extends Controller
 
     public function logout(): RedirectResponse
     {
-//        $request->user()->currentAccessToken()->delete();
         Auth::user()->tokens()->delete();
-//        if (!Auth::check()) {
-//            Redirect::to('welcome');
-//        }
-//        Auth::logout();
+
         return Redirect::to('/');
     }
 }
