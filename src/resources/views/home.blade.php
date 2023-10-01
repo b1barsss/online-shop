@@ -5,7 +5,9 @@
         <div class="row">
             <div class="col-md-10 offset-md-1">
                 <div class="card">
-                    <div class="card-header">Main page</div>
+                    <div class="card-header">
+                        <div class="h4">Home page</div>
+                    </div>
 
                     <div class="card-body">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been

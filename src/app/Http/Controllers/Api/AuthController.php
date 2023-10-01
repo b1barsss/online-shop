@@ -79,7 +79,6 @@ class AuthController extends MyController
 
         session()->flash('danger', 'Invalid credentials.');
         return Redirect::to(route('login'));
-
 //        return $this->sendError('Unauthorised.', ['error' => 'Invalid credentials']);
     }
 
@@ -89,8 +88,6 @@ class AuthController extends MyController
         Auth::guard('web')->logout();
         session()->flash('success', 'User logged out successfully');
         return Redirect::to('/');
-
 //        return $this->sendResponse([], 'User logout successfully.');
-
     }
 }

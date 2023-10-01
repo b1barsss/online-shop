@@ -5,21 +5,23 @@
         <div class="row">
             <div class="col-md-10 offset-md-1">
                 <div class="card">
-                    <div class="card-header">Login form</div>
+                    <div class="card-header">
+                        <div class="h4">Login form</div>
+                    </div>
 
                     <div class="card-body">
-                        <form  action="{{ route('api.login') }}" method="POST">
+                        <form action="{{ route('api.login') }}" method="POST">
                             @csrf
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input name="email" type="email" id="form2Example1" class="form-control"/>
-                                <label class="form-label" for="form2Example1">Email address</label>
+                                <input name="email" type="email" id="email" class="form-control"/>
+                                <label class="form-label" for="email">Email address</label>
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input name="password" type="password" id="form2Example2" class="form-control" />
-                                <label class="form-label" for="form2Example2">Password</label>
+                                <input name="password" type="password" id="password" class="form-control"/>
+                                <label class="form-label" for="password">Password</label>
                             </div>
 
                             <!-- Submit button -->

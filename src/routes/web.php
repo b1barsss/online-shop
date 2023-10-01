@@ -13,14 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [\App\Http\Controllers\Web\HomeController::class, 'index'])->name('home');
 
 Route::controller(\App\Http\Controllers\Web\AuthController::class)->group(function () {
     Route::get('login', 'login')->name('login');
     Route::get('register', 'register')->name('register');
-    Route::post('logout', 'logout');
 });
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::controller(\App\Http\Controllers\Web\ProductController::class)->group(function () {
+    Route::get('product/create', 'create')->name('product.create');
+    Route::get('product/{product_id}/edit', 'edit')->name('product.edit');
+    Route::put('product/{product_id}', 'update')->name('product.update');
+    Route::delete('product/{product_id}', 'destroy')->name('product.destroy');
+    Route::get('products', 'index')->name('product.index');
+    Route::get('product/{product_id}', 'show')->name('product.show');
+    Route::post('product', 'store')->name('product.store');
+});

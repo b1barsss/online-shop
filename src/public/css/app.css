@@ -1,0 +1,22 @@
+.bg-custom {
+    background-color: #bed9ff;
+}
+
+.bg-red {
+    background-color: #ffd0de;
+}
+
+body {
+    background-color: #e9f3ff;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.btn-wrapper {
+    position: relative;
+}

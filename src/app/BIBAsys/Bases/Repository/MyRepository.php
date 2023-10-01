@@ -28,6 +28,11 @@ class MyRepository
         return $this->tableAlias;
     }
 
+    public function tableKey(): string
+    {
+        return $this->tableKey;
+    }
+
     public function tableAliasDot(): string
     {
         return $this->tableAlias() . '.';
@@ -58,4 +63,13 @@ class MyRepository
             ->query()
             ->first();
     }
+
+    public function find(mixed $id): object|null
+    {
+        return $this
+            ->whereKey($id)
+            ->query()
+            ->first();
+    }
+
 }
