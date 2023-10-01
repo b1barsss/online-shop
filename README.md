@@ -23,12 +23,17 @@ Seed catalog_user_roles table:
 docker compose run --rm artisan db:seed --class=SeedCatalogUserRolesTable
 ```
 
-(Optionally) To use your any composer commands:
+Seed catalog_order_stasuses table:
+```bash
+docker compose run --rm artisan db:seed --class=SeedCatalogOrderStatusesTable
+```
+
+(Optional) To use your any composer commands:
 ```bash
 docker compose run --rm composer {your composer command}
 ```
 
-(Optionally) To use your any artisan commands:
+(Optional) To use your any artisan commands:
 ```bash
 docker compose run --rm artisan {your artisan command}
 ```
