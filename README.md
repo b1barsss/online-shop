@@ -1,5 +1,6 @@
-# online-shop (Тестовое задание)
-Для запуска проекта, смотрите инструкцию ниже:
+# online-shop
+
+Simple project, some CRUD bases
 
 ## To start the project, run these commands step by step
 
