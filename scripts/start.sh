@@ -1,3 +1,4 @@
+sudo chmod 777 -R src/;
 sudo cp -r src/.env.example src/.env;
 docker compose up -d nginx;
 docker compose run --rm composer install;
