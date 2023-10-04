@@ -10,8 +10,8 @@ use App\Sources\Main\Cart\CartRepository;
 use App\Sources\Main\Order\OrderModel;
 use App\Sources\Main\Order\OrderRepository;
 use App\Sources\Main\Product\ProductRepository;
+use App\Sources\Main\User\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
@@ -34,10 +34,10 @@ class OrderController extends Controller
             ->addJoinProducts()
             ->query();
 
-        if (Auth::isAdmin()) {
-            $OrderRepositoryQuery = $OrderRepositoryQuery->where('product.created_by', Auth::user()->id);
-        } elseif (Auth::isCustomer()) {
-            $OrderRepositoryQuery = $OrderRepositoryQuery->where('main.customer_id', Auth::user()->id);
+        if (User::isAdmin()) {
+            $OrderRepositoryQuery = $OrderRepositoryQuery->where('product.created_by', User::id());
+        } elseif (User::isCustomer()) {
+            $OrderRepositoryQuery = $OrderRepositoryQuery->where('main.customer_id', User::id());
         }
         $OrderRepository = $OrderRepositoryQuery
             ->get()

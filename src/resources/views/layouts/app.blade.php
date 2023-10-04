@@ -17,7 +17,8 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('product.index') }}">Products<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('product.index') }}">Products<span
+                                class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('order.index') }}">Orders
@@ -35,10 +36,10 @@
                 </ul>
                 <div class="">
                     <ul class="navbar-nav mr-auto">
-                        @auth
+                        @if(\App\Sources\Main\User\User::isLoggedIn())
                             <li class="nav-item active">
                                 @php
-                                    $user = \Illuminate\Support\Facades\Auth::user();
+                                    $user = \App\Sources\Main\User\User::user();
                                     $username = $user->name . ' ';
                                     $username .= '(' . \App\Sources\Catalogs\UserRole\UserRoleModel::find($user->catalog_user_role)->name . ')';
                                 @endphp
@@ -57,7 +58,7 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="/register">Register</a>
                             </li>
-                        @endauth
+                        @endif
                     </ul>
                 </div>
             </div>

@@ -7,7 +7,7 @@ use App\Sources\Main\Cart\CartModel;
 use App\Sources\Main\Cart\CartProductsModel;
 use App\Sources\Main\Cart\CartRepository;
 use App\Sources\Main\Product\ProductRepository;
-use Illuminate\Support\Facades\Auth;
+use App\Sources\Main\User\User;
 use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
@@ -23,7 +23,7 @@ class CartController extends Controller
             ->addJoinDtProducts()
             ->addProductsInfo()
             ->query()
-            ->where('main.user_id', Auth::user()->id)
+            ->where('main.user_id', User::id())
             ->get()
             ->sortBy('id');
         $productCount = $CartRepository->count();
@@ -32,7 +32,7 @@ class CartController extends Controller
     }
 
     public function add($product_id) {
-        $user = Auth::user();
+        $user = User::user();
         $CartModel = CartModel::where('user_id', '=', $user->id)->first();
         if (is_null($CartModel)) {
             $CartModel = CartModel::create(['user_id' => $user->id]);
@@ -43,8 +43,7 @@ class CartController extends Controller
     }
 
     public function remove($dt__product__id) {
-        CartProductsModel::find($dt__product__id)
-            ?->delete();
+        CartProductsModel::find($dt__product__id)?->delete();
         return Redirect::to(route('cart.index'));
     }
 }

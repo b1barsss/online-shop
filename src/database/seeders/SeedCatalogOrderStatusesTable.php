@@ -14,8 +14,8 @@ class SeedCatalogOrderStatusesTable extends Seeder
      */
     public function run(): void
     {
-        if (!is_null(OrderStatusModel::find(4))) {
-            dd('You have already run this command!');
+        if (!is_null(OrderStatusModel::find(3))) {
+            dump('You have already run this command!');
             return;
         }
 

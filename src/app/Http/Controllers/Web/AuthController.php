@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Sources\Main\User\User;
 use Illuminate\Support\Facades\Request;
 class AuthController extends Controller
 {
@@ -14,7 +14,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        if (Auth::isLoggedIn()) {
+        if (User::isLoggedIn()) {
             return \Illuminate\Support\Facades\Redirect::to('/');
         }
         return view('auth.register');
@@ -29,7 +29,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        if (Auth::isLoggedIn()) {
+        if (User::isLoggedIn()) {
             return \Illuminate\Support\Facades\Redirect::to('/');
         }
         $apiUrl = '/api/login';
@@ -38,7 +38,7 @@ class AuthController extends Controller
 
     public function logout(): RedirectResponse
     {
-        Auth::user()->tokens()->delete();
+        User::user()->tokens()->delete();
 
         return Redirect::to('/');
     }

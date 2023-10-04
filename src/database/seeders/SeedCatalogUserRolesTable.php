@@ -14,7 +14,7 @@ class SeedCatalogUserRolesTable extends Seeder
     public function run(): void
     {
         if (!is_null(UserRoleModel::find(2))) {
-            dd('You have already run this command!');
+            dump('You have already run this command!');
             return;
         }
 

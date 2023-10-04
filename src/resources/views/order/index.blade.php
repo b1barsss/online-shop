@@ -31,19 +31,19 @@
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="btn-wrapper text-center d-flex justify-content-between">
-                                                        @if (\Illuminate\Support\Facades\Auth::isCustomer() or $order->catalog_order_status != \App\Sources\Catalogs\OrderStatus\OrderStatusEnum::PENDING)
+                                                        @if (\App\Sources\Main\User\User::isCustomer() or $order->catalog_order_status != \App\Sources\Catalogs\OrderStatus\OrderStatusEnum::PENDING)
                                                             <div><?= 'Status: ' ?>
                                                                 @if($order->catalog_order_status == \App\Sources\Catalogs\OrderStatus\OrderStatusEnum::DECLINED)
                                                                     <span class="text-danger"><?=  \App\Sources\Catalogs\OrderStatus\OrderStatusModel::find($order->catalog_order_status)->name ?></span>
                                                                 @elseif($order->catalog_order_status == \App\Sources\Catalogs\OrderStatus\OrderStatusEnum::CONFIRMED)
                                                                     <span class="text-success"><?=  \App\Sources\Catalogs\OrderStatus\OrderStatusModel::find($order->catalog_order_status)->name ?></span>
                                                                 @else
-                                                                    <span class="text-warning"><?=  \App\Sources\Catalogs\OrderStatus\OrderStatusModel::find($order->catalog_order_status)->name ?></span>
+                                                                    <span class="text-primary"><?=  \App\Sources\Catalogs\OrderStatus\OrderStatusModel::find($order->catalog_order_status)->name ?></span>
                                                                 @endif
                                                             </div>
                                                         @endif
 
-                                                        @if(\Illuminate\Support\Facades\Auth::isAdmin() and $order->catalog_order_status == \App\Sources\Catalogs\OrderStatus\OrderStatusEnum::PENDING)
+                                                        @if(\App\Sources\Main\User\User::isAdmin() and $order->catalog_order_status == \App\Sources\Catalogs\OrderStatus\OrderStatusEnum::PENDING)
                                                             <a href="{{ route('order.choose', ['order_id' => $order->id, 'catalog_order_status' => \App\Sources\Catalogs\OrderStatus\OrderStatusEnum::DECLINED]) }}" class="btn btn-sm btn-danger" style="">Decline</a>
                                                             <a href="{{ route('order.choose', ['order_id' => $order->id, 'catalog_order_status' => \App\Sources\Catalogs\OrderStatus\OrderStatusEnum::CONFIRMED]) }}" class="btn btn-sm btn-success" style="">Confirm</a>
                                                         @endif

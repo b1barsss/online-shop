@@ -11,7 +11,7 @@ docker compose up -d nginx
 
 Set up laravel .env file:
 ```bash
-sudo cp /src/.env.example /src/.env
+sudo cp /src/.env /src/.env
 ```
 
 Migrate table:

@@ -65,7 +65,7 @@ class ProductController extends Controller
         }
 
         $request_all = $request->all();
-        $request_all['created_by'] = Auth::user()->id;
+        $request_all['created_by'] = Auth::id();
         $product_id = ProductModel::create($request_all);
         session()->flash('success', 'Product created successfully.');
         return Redirect::to(route('product.show', ['product_id' => $product_id]));

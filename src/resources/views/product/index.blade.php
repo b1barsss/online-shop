@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <div class="btn-wrapper text-center d-flex justify-content-between">
                             <div class="h4">Products</div>
-                            @if(\Illuminate\Support\Facades\Auth::isAdmin())
+                            @if(\App\Sources\Main\User\User::isAdmin())
                                 <a href="{{ route('product.create') }}" class="btn btn-outline-success">Add Product</a>
                             @endif
                         </div>
@@ -34,7 +34,7 @@
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="btn-wrapper text-center d-flex justify-content-between">
-                                                        @if(\Illuminate\Support\Facades\Auth::isAdmin() and \Illuminate\Support\Facades\Auth::isItMe($product->created_by))
+                                                        @if(\App\Sources\Main\User\User::isAdmin() and \App\Sources\Main\User\User::isItMe($product->created_by))
                                                             <form action="{{ route('product.destroy', ['product_id' => $product->id]) }}" method="post">
                                                                 @csrf
                                                                 @method('delete')
@@ -45,7 +45,7 @@
                                                                 >Delete</button>
                                                             </form>
                                                             <a href="{{ route('product.edit', ['product_id' => $product->id]) }}" class="btn btn-sm btn-warning" style="">Edit</a>
-                                                        @elseif(\Illuminate\Support\Facades\Auth::isCustomer())
+                                                        @elseif(\App\Sources\Main\User\User::isCustomer())
                                                             <a href="{{ route('cart.add', ['product_id' => $product->id]) }}" class="btn btn-sm btn-success" style="">Add to cart</a>
                                                         @endif
                                                     </div>

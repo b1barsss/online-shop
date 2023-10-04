@@ -9,7 +9,7 @@
                         <div class="btn-wrapper text-center d-flex justify-content-between">
                             <div class="h4">Cart</div>
                             @if($productCount > 0)
-                                <a href="{{ route('order.add', ['user_id' => \Illuminate\Support\Facades\Auth::user()->id]) }}" class="btn btn-outline-success">Send Orders</a>
+                                <a href="{{ route('order.add', ['user_id' => \App\Sources\Main\User\User::id()]) }}" class="btn btn-outline-success">Send Orders</a>
                             @endif
                         </div>
                     </div>

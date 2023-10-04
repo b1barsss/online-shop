@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Sources\Main\Order;
+namespace App\Sources\Main\User;
 
 use App\BIBAsys\Bases\Facade\MyFacade;
-use App\Sources\Main\Order\OrderRepositoryFacaded as Facaded;
+use App\Sources\Main\User\UserFacaded as Facaded;
 
-class OrderRepository extends MyFacade
+class User extends MyFacade
 {
     protected static function getFacadeAccessor()
     {
