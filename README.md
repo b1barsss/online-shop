@@ -4,29 +4,34 @@ Simple project, some CRUD bases
 
 ## To start the project, run these commands step by step
 
+Set up laravel .env file:
+```bash
+sudo cp /src/.env.example /src/.env
+```
+
 Start docker containers:
 ```bash
 docker compose up -d nginx
 ```
 
-Set up laravel .env file:
+To generate APP_KEY (important):
 ```bash
-sudo cp /src/.env /src/.env
+docker compose run --rm artisan key:generate
 ```
 
-Migrate table:
+To install laravel packages:
+```bash
+docker compose run --rm composer install
+```
+
+To migrate tables:
 ```bash
 docker compose run --rm artisan migrate
 ```
 
-Seed catalog_user_roles table:
+To seed catalog tables:
 ```bash
-docker compose run --rm artisan db:seed --class=SeedCatalogUserRolesTable
-```
-
-Seed catalog_order_stasuses table:
-```bash
-docker compose run --rm artisan db:seed --class=SeedCatalogOrderStatusesTable
+docker compose run --rm artisan db:seed 
 ```
 
 (Optional) To use your any composer commands:
@@ -43,7 +48,7 @@ docker compose run --rm artisan {your artisan command}
 
 On browser open the 'localhost'
 
-To manage database, open 'localhost:5050'
+To manage database with pgadmin, open 'localhost:5050'
 
 
 # If you are getting error permission denied to file laravel.log, then check this link:
