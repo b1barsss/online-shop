@@ -4,7 +4,12 @@ Simple project, some CRUD bases
 
 ## To configure the project
 
-After cloning the repository, open /online-shop folder on the terminal and run this command:
+Open '/online-shop' folder:
+```bash
+cd path/to/the/folder/online-shop
+```
+
+Run this command and wait:
 ```bash
 bash scripts/start.sh
 ```
@@ -13,7 +18,7 @@ Then open 'localhost' on your browser.
 ----------------------------------
 
 (Optional) To use your any composer commands:
-```bash
+```sh
 docker compose run --rm composer {your composer command}
 ```
 
