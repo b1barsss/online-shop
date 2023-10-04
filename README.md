@@ -1,4 +1,4 @@
-<img width="352" alt="image" src="https://github.com/b1barsss/online-shop/assets/47029176/e1518637-aa33-402a-9df0-c614e1cebe5e"># online-shop
+# online-shop
 
 Simple project, some CRUD bases
 
