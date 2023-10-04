@@ -2,7 +2,7 @@
 
 Simple project, some CRUD bases
 
-## To configure the project
+## To start the project
 
 Open '/online-shop' folder:
 ```bash
