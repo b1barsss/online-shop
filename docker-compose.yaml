@@ -50,7 +50,6 @@ services:
       dockerfile: composer.Dockerfile
     volumes:
       - ./src:/var/www/laravel
-    user: "1000:1000"
 
   artisan:
     build:
@@ -58,7 +57,6 @@ services:
       dockerfile: php.Dockerfile
     volumes:
       - ./src:/var/www/laravel
-    user: "1000:1000"
     entrypoint: ["php", "/var/www/laravel/artisan"]
 
 volumes:
