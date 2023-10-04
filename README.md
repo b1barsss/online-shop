@@ -16,7 +16,7 @@ bash scripts/start.sh
 
 Then open 'localhost' on your browser. 
 ----------------------------------
-<img width="352" alt="image" src="https://github.com/b1barsss/online-shop/assets/47029176/a821418a-4294-4f0d-8885-bd9be3cf7830">
+<img width="593" alt="image" src="https://github.com/b1barsss/online-shop/assets/47029176/191da11d-08c4-4418-8c4c-b6637f9109c4">
 
 (Optional) To use your any composer commands:
 ```sh
